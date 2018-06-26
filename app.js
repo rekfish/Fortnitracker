@@ -1,11 +1,11 @@
 ////TRN-Api-Key: 0dc4ffbf-efa9-4742-b294-edcba4054483
 //GET https://api.fortnitetracker.com/v1/profile/{platform}/{epic-nickname}
 //Platforms--pc, xbl, psn
-var express = require('express');
-var app = express();
-var path = require('path');
-var request = require('request');
-var bodyParser = require('body-parser');
+const express = require('express');
+const app = express();
+const path = require('path');
+const request = require('request');
+const bodyParser = require('body-parser');
 const {google} = require('googleapis');
 //var keys = require(JSON.parse('keys'));
 
@@ -77,7 +77,7 @@ var OAuth2 = google.auth.OAuth2;
 var oauth2Client = new OAuth2("1070820662989-enup0g8c4i905irhj1ss707am40a9i78.apps.googleusercontent.com", "MLp7aZ5aARrPioss9vK4", "http://localhost:3000/oauthcallback");
 
 // generate a url that asks permissions for Google+ and Google Calendar scopes
-var scopes = [
+const scopes = [
   'https://www.googleapis.com/auth/gmail.modify'
 ];
 

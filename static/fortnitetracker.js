@@ -1,12 +1,12 @@
 $(function(){
-    var submitBtn = $('#submit');
-    var platfromDropDownBtn = $('#platform a');
-    var epicNickName = $('#epicNickName');
-    var results = $('#results');
-    var ctx = $('#myChart');
+    const submitBtn = $('#submit');
+    const platfromDropDownBtn = $('#platform a');
+    const epicNickName = $('#epicNickName');
+    const results = $('#results');
+    const ctx = $('#myChart');
     // var addStreamnNmeBtn=document.getElementById("addStreamnNmeBtn");
     // var streamname =$('streamname');
-    var users = [ "thelostgamers_", "JohnnyLocksmith", "ninja", "highdistortion", "TSM_Daequan", "tfue", "drakekilla69","dakotaz"];
+    const users = [ "thelostgamers_", "JohnnyLocksmith", "ninja", "highdistortion", "TSM_Daequan", "tfue", "drakekilla69","dakotaz"];
     
 
     submitBtn.click(function(){
@@ -83,9 +83,9 @@ $(function(){
 
 
 
-  var baseurl = "https://wind-bow.gomix.me/twitch-api/";
+  const baseurl = "https://wind-bow.gomix.me/twitch-api/";
 
-  var twitch_url = "https://www.twitch.tv/";
+  const twitch_url = "https://www.twitch.tv/";
 
   var userLogo, userProfile, userFollowers, userStatus, userActivity, userUrl;
 
