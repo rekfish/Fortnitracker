@@ -1,0 +1,194 @@
+<head>
+    <meta charset="utf-8">
+
+    <title>Fortnitracker</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+   <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
+     <!-- angular fetched from cdn -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300" type="text/css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script src="public/fortnitetracker.js"></script>
+</head>
+<!-- Background animated gradient was taken from resource: ://www.webdesignerdepot.com-->
+<!-- When attemptin to create a styles.css file this did not render  ask for help -->
+
+
+<!--layout to pass in twitch stream data -->
+<body>
+<body background="dingus_gaming_logo.png">
+<div class="container"style= style="margin-top: 12em">
+    <h1>Fortnitrack your stats!</h1>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input type="text" id="epicNickName" class="form-control" aria-label="Text input with segmented dropdown button">
+                <div class="input-group-append">
+                    <button type="button-alert" id="submit" class="btn btn-danger">Submit</button>
+                    <button type="button" class="btn btn-danger dropdown-toggle" dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu" id="platform">
+                    	<!-- To use with Jquery in fortnitetracker.js -->
+                        <a class="dropdown-item" href="#">Pc</a>
+                        <a class="dropdown-item" href="#">Xbl</a>
+                        <a class="dropdown-item" href="#">Psn</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6" id="results"></div>
+        <div class="col-lg-3"></div>
+
+    </div>
+        <div class="chart-container" style="position: center; height:60vh; width:65vw">
+    <canvas id="myChart"></canvas>
+
+<br></br>
+<div id ="content">        
+</div>
+
+  <div class="container text-center main">
+    <h2 id="try">Fortnitracker team on Twitch!</h2>
+  <!-- render offline streamers -->
+    <div id="streamers" class="table-responsive-sm">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Twitch Channel</th>
+            <th scope="col">Status</th>
+            <th scope="col">Game/Activity</th>
+            <th scope="col">Followers</th>
+          </tr>
+        </thead>
+
+
+        <tbody>
+        </tbody>
+
+       
+        </div>
+      </table>
+    </div>
+    
+
+
+  </div >
+
+</body>
+<
+
+</body>	
+<!-- Angular framework was too bulky/robust and not needed for my app.... but to satisfy the requirement of the class, I pulled a minified script from a CDN in order for google auth desgined with angular -->
+<div class="text-center container-fluid">
+	<body ng-app="app" ng-controller="ctrl">
+<div class="container text-center main">
+  <img src="https://i.stack.imgur.com/XzoRm.png" ng-click="login()">
+  </bin>
+  </div>
+
+  <script>
+    var app = angular.module("app", []);
+    app.controller("ctrl", function($scope, $http, $window) {
+      var url;
+      var windowThatWasOpened;
+      $http.get("url").then(function(response) {
+        url = response.data;
+      });
+      $scope.login = function() {
+        windowThatWasOpened = $window.open(url, "Please sign in with Google", "width=500px,height:700px");
+        
+      };
+      window.onmessage = function(e) {
+        windowThatWasOpened.close();
+        var urlWithCode = e.data;
+        var idx = urlWithCode.lastIndexOf("code=");
+        var code = urlWithCode.substring(idx + 5).replace("#","");
+        console.log(code);
+        $http.get("tokens?code=" + code).then(function(response) {
+          console.log(response.data);
+        });
+      };
+    });
+  </script>
+
+  <!-- when creating a separate static CSS file the background would not get applies. I did the standard practice of adding an app.us case
+  as well as writing a get method to pull the css. I failed and was forced to do pull bootstap from the cdn and use in
+   line styling for the background  -->
+<style>
+
+body {
+	width: 100wh;
+	height: 90vh;
+	color: black;
+	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+h1{color:black;},
+h6 {
+	font-family: 'Open Sans';
+	font-weight: 300;
+	text-align: center;
+	position: absolute;
+	top: 45%;
+	right: 0;
+	left: 0;
+}
+</style>
+
+</body>
+ 
